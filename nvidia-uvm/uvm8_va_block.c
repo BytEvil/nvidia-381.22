@@ -36,6 +36,10 @@
 #include "uvm8_perf_prefetch.h"
 #include "uvm8_mem.h"
 
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,9)
+#include <linux/sched/task_stack.h>
+#endif
+
 typedef enum
 {
     BLOCK_PTE_OP_MAP,

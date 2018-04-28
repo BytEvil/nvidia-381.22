@@ -150,9 +150,7 @@ nvidia_encoder_new(struct drm_device *dev,
     ret = drm_encoder_init(dev,
                            &nv_encoder->base, &nv_encoder_funcs,
                            nvkms_connector_signal_to_drm_encoder_signal(format)
-#if defined(NV_DRM_INIT_FUNCTIONS_HAVE_NAME_ARG)
                            , NULL
-#endif
                            );
 
     if (ret != 0)

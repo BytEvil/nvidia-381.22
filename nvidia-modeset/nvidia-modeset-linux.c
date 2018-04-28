@@ -337,8 +337,8 @@ static void nvkms_resume(NvU32 gpuId)
 
 static nvidia_modeset_rm_ops_t __rm_ops = { 0 };
 static nvidia_modeset_callbacks_t nvkms_rm_callbacks = {
-    nvkms_suspend,
-    nvkms_resume
+    .suspend = nvkms_suspend,
+    .resume = nvkms_resume
 };
 
 static int nvkms_alloc_rm(void)
@@ -1285,7 +1285,7 @@ module_init(nvkms_init);
 module_exit(nvkms_exit);
 
 #if defined(MODULE_LICENSE)
-  MODULE_LICENSE("NVIDIA");
+  MODULE_LICENSE("GPLv2");
 #endif
 #if defined(MODULE_INFO)
   MODULE_INFO(supported, "external");

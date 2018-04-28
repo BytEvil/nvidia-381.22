@@ -162,7 +162,7 @@ static void nvidia_crtc_disable(struct drm_crtc *crtc)
 
 }
 
-static void nvidia_crtc_enable(struct drm_crtc *crtc)
+static void nvidia_crtc_enable(struct drm_crtc *crtc, struct drm_crtc_state *old_state)
 {
 
 }
@@ -170,7 +170,7 @@ static void nvidia_crtc_enable(struct drm_crtc *crtc)
 static const struct drm_crtc_helper_funcs nv_crtc_helper_funcs = {
     .prepare    = nvidia_crtc_prepare,
     .commit     = nvidia_crtc_commit,
-    .enable     = nvidia_crtc_enable,
+    .atomic_enable = nvidia_crtc_enable,
     .disable    = nvidia_crtc_disable,
     .mode_fixup = nvidia_crtc_mode_fixup,
 };
@@ -223,10 +223,9 @@ static struct drm_plane *nvidia_plane_create
         dev,
         plane, crtc_mask, funcs,
         formats, formats_count,
+	NULL,
         plane_type
-#if defined(NV_DRM_INIT_FUNCTIONS_HAVE_NAME_ARG)
         , NULL
-#endif
         );
 
     if (ret != 0)
@@ -354,9 +353,7 @@ struct drm_crtc *nvidia_drm_add_crtc(struct drm_device *dev, NvU32 head)
                                     &nv_crtc->base,
                                     primary_plane, cursor_plane,
                                     &nv_crtc_funcs
-#if defined(NV_DRM_INIT_FUNCTIONS_HAVE_NAME_ARG)
                                     , NULL
-#endif
                                     );
 
     if (ret != 0)

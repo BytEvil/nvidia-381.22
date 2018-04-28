@@ -53,6 +53,7 @@ extern "C" {
 //
 // Miscellaneous macros useful for bit field manipulations
 //
+#undef  BIT
 #define BIT(b)                  (1<<(b))
 #define BIT32(b)                ((NvU32)1<<(b))
 #define BIT64(b)                ((NvU64)1<<(b))

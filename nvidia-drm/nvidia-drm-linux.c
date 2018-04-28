@@ -185,7 +185,7 @@ module_init(nv_linux_drm_init);
 module_exit(nv_linux_drm_exit);
 
 #if defined(MODULE_LICENSE)
-  MODULE_LICENSE("MIT");
+  MODULE_LICENSE("GPLv2");
 #endif
 #if defined(MODULE_INFO)
   MODULE_INFO(supported, "external");

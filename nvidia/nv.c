@@ -38,7 +38,7 @@
 
 #if (NV_BUILD_MODULE_INSTANCES != 0)
 #if defined(MODULE_LICENSE)
-MODULE_LICENSE("NVIDIA");
+MODULE_LICENSE("GPLv2");
 #endif
 #if defined(MODULE_INFO)
 MODULE_INFO(supported, "external");
